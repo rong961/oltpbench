@@ -4,22 +4,22 @@
     <!-- Connection details -->
     <dbtype>mysql</dbtype>
     <driver>com.mysql.jdbc.Driver</driver>
-    <DBUrl>jdbc:mysql://localhost:3306/tpcc</DBUrl>
-    <username>root</username>
+    <DBUrl>jdbc:mysql://10.24.14.159:2883/chbenchmark?rewriteBatchedStatements=true&amp;allowMultiQueries=true&amp;useLocalSessionState=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;socketTimeout=3000000</DBUrl>
+    <username>root@test</username>
     <password></password>
-    <isolation>TRANSACTION_SERIALIZABLE</isolation>
+    <isolation>TRANSACTION_REPEATABLE_READ</isolation>
     <uploadCode></uploadCode>
     <uploadUrl></uploadUrl>
     
     <!-- Scale factor is the number of warehouses in TPCC -->
-    <scalefactor>2</scalefactor>
+    <scalefactor>8</scalefactor>
     
     <!-- The workload -->
-    <terminals>2</terminals>
+    <terminals>8</terminals>
     <works>
         <work>
-          <time>60</time>
-          <rate>10000</rate>
+          <time>1800</time>
+          <rate>unlimited</rate>
           <weights>45,43,4,4,4</weights>
         </work>
     </works>

@@ -3,41 +3,41 @@
 
 	<!-- Connection details -->
     <dbtype>mysql</dbtype>
-    <driver>com.mysql.jdbc.Driver</driver>
-    <DBUrl>jdbc:mysql://localhost:3306/chbenchmark</DBUrl>
-    <username>root</username>
+	<driver>com.mysql.jdbc.Driver</driver>
+    <DBUrl>jdbc:mysql://10.24.14.159:2883/chbenchmark?rewriteBatchedStatements=true&amp;allowMultiQueries=true&amp;useLocalSessionState=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;socketTimeout=3000000</DBUrl>
+    <username>root@test</username>
     <password></password>
-    <isolation>TRANSACTION_SERIALIZABLE</isolation>
+    <isolation>TRANSACTION_REPEATABLE_READ</isolation>
     <uploadCode></uploadCode>
     <uploadUrl></uploadUrl>
 
 	<!-- Scale factor is the number of warehouses in TPCC -->
-	<scalefactor>2</scalefactor>
+	<scalefactor>10</scalefactor>
 
 	<!-- The workload -->
 	<!-- Number of terminal per workload -->
-	<terminals>2</terminals>
+	<!-- <terminals>80</terminals> -->
 
 	<!-- Note: Workload-specific options are marked with @bench=[workload_name] -->
 
 	<!-- Workload-specific number of terminals -->
-	<!-- <terminals bench="chbenchmark">2</terminals> -->
-	<!-- <terminals bench="tpcc">5</terminals> -->
+	<terminals bench="chbenchmark">2</terminals>
+	<terminals bench="tpcc">8</terminals>
 
 	<works>
  
 	    <!-- A Basic WorkPhase for Mixed Workloads -->
 		<work>
-			<time>60</time>
+			<time>900</time>
 
 			<!-- Note: The rate can also be set to UNLIMITED or DISABLED -->
-			<rate>10000</rate>
+			<rate>unlimited</rate>
 
             <!-- Serial execution of the chbenchmark queries -->
             <!-- Note: Weights are interpreted differently when serial is enabled: -->
             <!--   Queries with positive weights are executed -->
             <!--   Queries with negative weights are skipped -->
-            <serial bench="chbenchmark">true</serial>
+            <serial bench="chbenchmark">false</serial>
 
             <!-- Non-serial execution of the tpcc transactions -->
             <serial bench="tpcc">false</serial>
