@@ -3,16 +3,16 @@
 
 	<!-- Connection details -->
     <dbtype>mysql</dbtype>
-	<driver>com.mysql.jdbc.Driver</driver>
-    <DBUrl>jdbc:mysql://10.24.14.159:2883/chbenchmark?rewriteBatchedStatements=true&amp;allowMultiQueries=true&amp;useLocalSessionState=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;socketTimeout=3000000</DBUrl>
+    <driver>com.mysql.jdbc.Driver</driver>
+    <DBUrl>jdbc:mysql://49.52.27.20:2883/yrchbenchmark?rewriteBatchedStatements=true&amp;allowMultiQueries=true&amp;useLocalSessionState=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;socketTimeout=2000000000</DBUrl>
     <username>root@test</username>
     <password></password>
-    <isolation>TRANSACTION_REPEATABLE_READ</isolation>
+    <isolation>TRANSACTION_READ_COMMITTED</isolation>
     <uploadCode></uploadCode>
     <uploadUrl></uploadUrl>
 
 	<!-- Scale factor is the number of warehouses in TPCC -->
-	<scalefactor>10</scalefactor>
+	<scalefactor>8</scalefactor>
 
 	<!-- The workload -->
 	<!-- Number of terminal per workload -->
@@ -28,7 +28,7 @@
  
 	    <!-- A Basic WorkPhase for Mixed Workloads -->
 		<work>
-			<time>900</time>
+			<time>1200</time>
 
 			<!-- Note: The rate can also be set to UNLIMITED or DISABLED -->
 			<rate>unlimited</rate>
