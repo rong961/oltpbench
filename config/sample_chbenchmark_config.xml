@@ -4,7 +4,7 @@
 	<!-- Connection details -->
     <dbtype>mysql</dbtype>
     <driver>com.mysql.jdbc.Driver</driver>
-    <DBUrl>jdbc:mysql://49.52.27.20:2883/yrchbenchmark?rewriteBatchedStatements=true&amp;allowMultiQueries=true&amp;useLocalSessionState=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;socketTimeout=2000000000</DBUrl>
+    <DBUrl>jdbc:mysql://49.52.27.20:2883/testchbenchmark?rewriteBatchedStatements=true&amp;allowMultiQueries=true&amp;useLocalSessionState=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;socketTimeout=2000000000</DBUrl>
     <username>root@test</username>
     <password></password>
     <isolation>TRANSACTION_READ_COMMITTED</isolation>
@@ -12,7 +12,7 @@
     <uploadUrl></uploadUrl>
 
 	<!-- Scale factor is the number of warehouses in TPCC -->
-	<scalefactor>8</scalefactor>
+	<scalefactor>100</scalefactor>
 
 	<!-- The workload -->
 	<!-- Number of terminal per workload -->

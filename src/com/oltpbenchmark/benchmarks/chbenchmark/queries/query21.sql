@@ -1,4 +1,5 @@
-SELECT su_name,
+SELECT /*+ parallel(96) */ 
+      su_name,
        count(*) AS numwait
 FROM supplier,
      order_line l1,

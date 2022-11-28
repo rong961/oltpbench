@@ -13,9 +13,9 @@ DROP TABLE IF EXISTS OORDER;
 DROP TABLE IF EXISTS ORDER_LINE;
 DROP TABLE IF EXISTS STOCK;
 DROP TABLE IF EXISTS WAREHOUSE;
-DROP tablegroup IF EXISTS tpcc_groupyr;
+DROP tablegroup IF EXISTS tpcc_groupyr1;
 
-create tablegroup if not exists tpcc_groupyr binding true partition by hash partitions 8;
+create tablegroup if not exists tpcc_groupyr1 binding true partition by hash partitions 100;
 
 CREATE TABLE CUSTOMER (
   C_W_ID INT NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE CUSTOMER (
   C_MIDDLE CHAR(2) NOT NULL,
   C_DATA VARCHAR(500) NOT NULL,
   PRIMARY KEY (C_W_ID,C_D_ID,C_ID)
-)tablegroup='tpcc_groupyr' partition by hash(c_w_id) partitions 8;;
+)tablegroup='tpcc_groupyr1' partition by hash(c_w_id) partitions 100;;
 
 
 CREATE TABLE DISTRICT (
@@ -56,7 +56,7 @@ CREATE TABLE DISTRICT (
   D_STATE CHAR(2) NOT NULL,
   D_ZIP CHAR(9) NOT NULL,
   PRIMARY KEY (D_W_ID,D_ID)
-)tablegroup='tpcc_groupyr' partition by hash(d_w_id) partitions 8;;
+)tablegroup='tpcc_groupyr1' partition by hash(d_w_id) partitions 100;;
 
 -- TODO: H_DATE ON UPDATE CURRENT_TIMESTAMP
 
@@ -69,7 +69,7 @@ CREATE TABLE HISTORY (
   H_DATE TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   H_AMOUNT DECIMAL(6,2) NOT NULL,
   H_DATA VARCHAR(24) NOT NULL
-)tablegroup='tpcc_groupyr' partition by hash(h_c_w_id) partitions 8;;
+)tablegroup='tpcc_groupyr1' partition by hash(h_c_w_id) partitions 100;;
 
 
 CREATE TABLE ITEM (
@@ -87,7 +87,7 @@ CREATE TABLE NEW_ORDER (
   NO_D_ID INT NOT NULL,
   NO_O_ID INT NOT NULL,
   PRIMARY KEY (NO_W_ID,NO_D_ID,NO_O_ID)
-)tablegroup='tpcc_groupyr' partition by hash(no_w_id) partitions 8;;
+)tablegroup='tpcc_groupyr1' partition by hash(no_w_id) partitions 100;;
 
 -- TODO: O_ENTRY_D  ON UPDATE CURRENT_TIMESTAMP
 
@@ -102,7 +102,7 @@ CREATE TABLE OORDER (
   O_ENTRY_D TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (O_W_ID,O_D_ID,O_ID),
   UNIQUE (O_W_ID,O_D_ID,O_C_ID,O_ID)
-)tablegroup='tpcc_groupyr' partition by hash(o_w_id) partitions 8;;
+)tablegroup='tpcc_groupyr1' partition by hash(o_w_id) partitions 100;;
 
 
 CREATE TABLE ORDER_LINE (
@@ -117,7 +117,7 @@ CREATE TABLE ORDER_LINE (
   OL_QUANTITY DECIMAL(2,0) NOT NULL,
   OL_DIST_INFO CHAR(24) NOT NULL,
   PRIMARY KEY (OL_W_ID,OL_D_ID,OL_O_ID,OL_NUMBER)
-)tablegroup='tpcc_groupyr' partition by hash(ol_w_id) partitions 8;;
+)tablegroup='tpcc_groupyr1' partition by hash(ol_w_id) partitions 100;;
 
 CREATE TABLE STOCK (
   S_W_ID INT NOT NULL,
@@ -138,7 +138,7 @@ CREATE TABLE STOCK (
   S_DIST_09 CHAR(24) NOT NULL,
   S_DIST_10 CHAR(24) NOT NULL,
   PRIMARY KEY (S_W_ID,S_I_ID)
-)tablegroup='tpcc_groupyr' partition by hash(s_w_id) partitions 8;;
+)tablegroup='tpcc_groupyr1' partition by hash(s_w_id) partitions 100;;
 
 CREATE TABLE WAREHOUSE (
   W_ID INT NOT NULL,
@@ -151,7 +151,7 @@ CREATE TABLE WAREHOUSE (
   W_STATE CHAR(2) NOT NULL,
   W_ZIP CHAR(9) NOT NULL,
   PRIMARY KEY (W_ID)
-)tablegroup='tpcc_groupyr' partition by hash(w_id) partitions 8;;
+)tablegroup='tpcc_groupyr1' partition by hash(w_id) partitions 100;;
 
 -- INDEXES
 CREATE INDEX IDX_CUSTOMER_NAME ON CUSTOMER (C_W_ID,C_D_ID,C_LAST,C_FIRST);

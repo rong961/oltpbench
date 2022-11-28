@@ -1,4 +1,4 @@
-SELECT n_name,
+SELECT /*+   parallel(96) */ n_name,
        sum(ol_amount) AS revenue
 FROM customer,
      oorder,

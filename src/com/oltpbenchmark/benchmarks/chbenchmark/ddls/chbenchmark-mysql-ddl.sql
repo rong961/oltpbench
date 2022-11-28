@@ -26,7 +26,7 @@ create table supplier (
    su_acctbal numeric(12,2) not null,
    su_comment char(101) not null,
    PRIMARY KEY ( su_suppkey )
-);
+)tablegroup='tpcc_groupyr1' partition by hash(su_suppkey) partitions 100;;
 CREATE INDEX IDX_nation ON nation(n_regionkey) ;
 CREATE INDEX IDX_region ON region(r_regionkey) ;
 CREATE INDEX IDX_supplier ON supplier(su_nationkey) ;
